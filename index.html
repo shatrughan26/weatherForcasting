@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Forcasting</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   </head>
   <body>
     <div class="main-container">
@@ -18,12 +19,13 @@
       </div>
 
       <div class="container">
-        <section class="box">
+        <section class="box" style="display: flex; flex-direction: column;">
+          <h4>Current Weather</h4>
           <h4 id="temp">Current Weather</h4>
         </section>
 
-        <section class="box">
-          <h4>map</h4>
+        <section class="box" style="padding: 0%;">
+          <div id="map">map</div>
         </section>
 
         <section class="box">
@@ -40,5 +42,6 @@
       </div>
     </div>
     <script type="module" src="app.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   </body>
 </html>

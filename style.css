@@ -1,5 +1,5 @@
 body {
-    background-color: #00A8E8 ;
+    background-color: #3C73BB ;
     font-family: 'Inter', sans-serif;
 }
 
@@ -15,6 +15,17 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
+    
+}
+
+.container .box{
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    color: white;
 }
 
 .search-box{
@@ -54,4 +65,16 @@ body {
 
 .box:nth-child(5){
     grid-column: span 2;
+}
+
+
+#map{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#temp{
+    font-size: 40px;
+    padding-left: 13px;
 }
