@@ -2,6 +2,7 @@ import { env } from "./env.js";
 
 const searchBtn = document.querySelector("#search-btn");
 const searchInput = document.querySelector("#search-input");
+const forecastList = document.querySelector("#forecast-list");
 
 const API_Key = env.WETHER_API_KEY;
 
@@ -83,6 +84,37 @@ searchBtn.addEventListener("click", async () => {
       <li>
         ${city.city} - ${city.temp}°C
       </li>
+    `;
+  });
+
+  const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_Key}&units=metric`;
+
+  const forecastResponse = await fetch(forecastUrl);
+  const forecastData = await forecastResponse.json();
+  console.log(forecastData);
+
+  forecastList.innerHTML = "";
+
+  const dailyForecast = forecastData.list.filter(item => {
+    return item.dt_txt.includes("12:00:00")
+  });
+
+  dailyForecast.forEach(day => {
+    const date = new Date(day.dt_txt);
+    const temp = day.main.temp;
+
+    forecastList.innerHTML += `
+      <div class="forecast-card">
+
+            <h5>
+                ${date.toLocaleDateString("en-US", {
+                    weekday: "short"
+                })}
+            </h5>
+
+            <p>${temp}°C</p>
+
+        </div>
     `;
   });
 
